@@ -7,4 +7,7 @@
 
     <!--Splash Screen Activity-->
     <string name="sms_permission_error">You will not be able to share messages</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

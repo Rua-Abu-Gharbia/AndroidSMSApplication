@@ -12,5 +12,7 @@
         <color name="primaryTextColor">#ffffff</color>
         <color name="secondaryTextColor">#000000</color>
 
+        <color name="app_gray">#858587</color>
+
 
 </resources>

@@ -14,11 +14,17 @@ import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.ruaabugharbia.smsapplication.R;
+import com.ruaabugharbia.smsapplication.controller.constants.AppConstants;
+import com.ruaabugharbia.smsapplication.controller.dataBase.AppDatabase;
 import com.ruaabugharbia.smsapplication.controller.service.UserTrackingReceiverIntentService;
 import com.ruaabugharbia.smsapplication.controller.utils.AppUtils;
+import com.ruaabugharbia.smsapplication.models.SMSModel;
+import com.ruaabugharbia.smsapplication.models.TypeModel;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.ruaabugharbia.smsapplication.controller.constants.AppConstants.PERMISSIONS_REQ;
 import static com.ruaabugharbia.smsapplication.controller.constants.AppConstants.PERMISSIONS_REQUEST;
@@ -31,6 +37,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static final int TIME_TO_LEAVE = 5000;//5000
 
     WebView  imageWebView ;
+    List<SMSModel> smsModelList ;
+    List<TypeModel> typeModelList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,7 @@ public class SplashScreenActivity extends AppCompatActivity {
            startService(new Intent(SplashScreenActivity.this, UserTrackingReceiverIntentService.class));
         }
 
+        getData();
 
         InputStream stream = null;
         try {
@@ -60,12 +69,21 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     }
 
+    private void getData(){
+        AppDatabase database = AppDatabase.getAppDatabase(this);
+        smsModelList = new ArrayList<>();
+        typeModelList = new ArrayList<>();
+        smsModelList = AppUtils.readExcelFile(this, AppConstants.FILE_NAME);
+        typeModelList = AppUtils.readExcelFileTypes(this, AppConstants.TYPE_OF_MESSAGES);
+        database.smsDao().insertAll(smsModelList);
+        database.typeDao().insertAll(typeModelList);
+    }
 
     private void navigate(){
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashScreenActivity.this,MainActivity.class);
+                Intent intent = new Intent(SplashScreenActivity.this,DetailsActivity.class);
                 startActivity(intent);
                 finish();
 

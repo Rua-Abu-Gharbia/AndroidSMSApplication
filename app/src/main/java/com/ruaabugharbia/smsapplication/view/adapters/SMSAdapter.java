@@ -57,6 +57,18 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
                 mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_using)));
             }
         });
+
+        holder.whatsappImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String shareBody = holder.smsBodyTextView.getText().toString().trim();
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.setPackage("com.whatsapp");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_using)));
+            }
+        });
     }
 
     @Override
@@ -66,12 +78,13 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         final TextView  smsBodyTextView;
-        final ImageView shareImageView;
+        final ImageView shareImageView , whatsappImageView ;
 
         public MyViewHolder(View view) {
             super(view);
             smsBodyTextView = view.findViewById(R.id.text_sms_body);
             shareImageView = view.findViewById(R.id.imageView_share);
+            whatsappImageView  = view.findViewById(R.id.imageView_whatsapp);
         }
     }
 }

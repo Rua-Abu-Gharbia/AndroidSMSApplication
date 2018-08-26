@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         smsRecyclerView = findViewById(R.id.sms_recycler_view);
         smsModelList = new ArrayList<>();
 
-        smsModelList = AppUtils.readExcelFile(MainActivity.this , AppConstants.fileName);
+        smsModelList = AppUtils.readExcelFile(MainActivity.this , AppConstants.FILE_NAME);
         fillSMSAdapter();
 
     }

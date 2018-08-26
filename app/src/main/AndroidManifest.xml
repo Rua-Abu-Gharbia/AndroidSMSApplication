@@ -3,9 +3,8 @@
     package="com.ruaabugharbia.smsapplication">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -14,9 +13,7 @@
         android:roundIcon="@mipmap/smslogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.activities.MainActivity">
-
-        </activity>
+        <activity android:name=".controller.activities.MainActivity"></activity>
         <activity android:name=".controller.activities.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,11 +24,12 @@
 
         <receiver
             android:name=".controller.receiver.SimpleWakefulReceiver"
-            android:process=":service"
-            android:enabled="true"/>
+            android:enabled="true"
+            android:process=":service" />
 
         <service android:name=".controller.service.UserTrackingReceiverIntentService" />
 
+        <activity android:name=".controller.activities.DetailsActivity"></activity>
     </application>
 
 </manifest>
