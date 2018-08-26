@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="border_color">#50fa83</color>
+
+        <color name="colorPrimary">#304ffe</color>
+        <color name="primaryLightColor">#7a7cff</color>
+        <color name="colorPrimaryDark">#0026ca</color>
+        <color name="colorAccent">#aeea00</color>
+        <color name="secondaryLightColor">#e4ff54</color>
+        <color name="secondaryDarkColor">#79b700</color>
+        <color name="primaryTextColor">#ffffff</color>
+        <color name="secondaryTextColor">#000000</color>
+
+
+</resources>

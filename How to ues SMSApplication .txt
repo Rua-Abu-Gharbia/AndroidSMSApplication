@@ -1,0 +1,25 @@
+SMSApplication features :
+
+1. This is Open soures Android Application  , show you some of messages 
+
+you can add , edit and delete messages from excel sheet "my-messages.xls" dont change file Name .
+
+you can find this file in : SMSApplication\app\src\main\assets . 
+
+and you can share these messages with your friends .
+
+2. The Application will send SMS at specific date to a specific number , 
+
+you can find them in the code in AppConstants.java file 
+
+   public static String Receiver_Phone_number = "07------" ; // change this to Receiver_Phone_number
+
+    public static String MESSAGE = "azad" ; // change this to the message you want to send
+
+    public static int DATE_TO_SEND = 9 ;  // change this to date you want to send the message
+	
+
+I hope you Love the Application 
+
+Regards,
+Rua Abu-Gharbia | Android Developer 	

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SMSApplication</string>
+
+    <!--sms item -->
+    <string name="sms_body">SMS Body</string>
+    <string name="share_using">Share using ... </string>
+
+    <!--Splash Screen Activity-->
+    <string name="sms_permission_error">You will not be able to share messages</string>
+</resources>
