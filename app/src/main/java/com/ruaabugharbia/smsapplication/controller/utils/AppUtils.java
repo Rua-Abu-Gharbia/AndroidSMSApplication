@@ -120,6 +120,9 @@ public class AppUtils {
             rowIter.hasNext();
             while (rowIter.hasNext()) {
                 HSSFRow myRow = (HSSFRow) rowIter.next();
+                if(myRow.getRowNum()==0 ){
+                    continue; //just skip the rows if row number is 0
+                }
                 Iterator<Cell> cellIter = myRow.cellIterator();
                 TypeModel typeModel = new TypeModel();
                 int colNumber = -1;
@@ -171,4 +174,9 @@ public class AppUtils {
         return false;
     }
 
+    public static void showAlertToast(String message, Context context) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+        //toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();
+    }
 }

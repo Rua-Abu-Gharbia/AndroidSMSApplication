@@ -10,12 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ruaabugharbia.smsapplication.R;
 import com.ruaabugharbia.smsapplication.controller.constants.AppConstants;
 import com.ruaabugharbia.smsapplication.controller.dataBase.AppDatabase;
 import com.ruaabugharbia.smsapplication.controller.utils.AppUtils;
+import com.ruaabugharbia.smsapplication.controller.utils.IntentExtraNames;
 import com.ruaabugharbia.smsapplication.models.SMSModel;
 import com.ruaabugharbia.smsapplication.models.TypeModel;
 import com.ruaabugharbia.smsapplication.view.adapters.SMSAdapter;
@@ -31,7 +35,7 @@ public class MessageSectionsFragment extends BlankFragment {
     List<SMSModel> smsModelList ;
     List<TypeModel> typeModelList ;
 
-    GridView typesGridView ;
+    LinearLayout typesGridView ;
 
 
     public MessageSectionsFragment() {
@@ -93,21 +97,26 @@ public class MessageSectionsFragment extends BlankFragment {
 
     private void fillTypeModels(){
 
-      for(TypeModel model :typeModelList){
-          CardView card = new CardView(getContext());
+      for(final TypeModel model :typeModelList){
+          final CardView card = new CardView(getContext());
 
           // Set the CardView layoutParams
           ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(
                   ViewGroup.LayoutParams.WRAP_CONTENT,
                   ViewGroup.LayoutParams.WRAP_CONTENT
           );
-          card.setLayoutParams(params);
+          // Set the CardView layoutParams
+          ViewGroup.LayoutParams params1 = new ViewGroup.LayoutParams(
+                  200,
+                  100
+          );
+          card.setLayoutParams(params1);
 
           // Set CardView corner radius
           card.setRadius(9);
 
           // Set cardView content padding
-          card.setContentPadding(15, 15, 15, 15);
+          card.setContentPadding(15, 20, 15, 20);
 
           // Set a background color for CardView
           card.setCardBackgroundColor(Color.parseColor("#FFC6D6C3"));
@@ -117,13 +126,23 @@ public class MessageSectionsFragment extends BlankFragment {
 
           // Set CardView elevation
           card.setCardElevation(9);
+          card.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  AppUtils.showAlertToast(model.getTypeName(),getContext());
+                  Bundle bundle = new Bundle();
+                  bundle.putString(IntentExtraNames.TYPE,model.getTypeName());
+                  gotoFragment(new MessageFragment(), getActivity().getSupportFragmentManager(),bundle);
+              }
+          });
 
           // Initialize a new TextView to put in CardView
           TextView tv = new TextView(getContext());
           tv.setLayoutParams(params);
           tv.setText(model.getTypeName());
-          tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 30);
+          tv.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
           tv.setTextColor(Color.RED);
+          tv.setGravity(View.TEXT_ALIGNMENT_CENTER);
 
           // Put the TextView in CardView
           card.addView(tv);

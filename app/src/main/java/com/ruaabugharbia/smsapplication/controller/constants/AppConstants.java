@@ -9,7 +9,7 @@ import android.Manifest;
 public class AppConstants {
 
     public static String FILE_NAME ="my-messages.xls";
-    public static String TYPE_OF_MESSAGES = "type-of-messages";
+    public static String TYPE_OF_MESSAGES = "type-of-messages.xls";
 
     public static String[] PERMISSIONS_REQ = {
             android.Manifest.permission.SEND_SMS , Manifest.permission.READ_EXTERNAL_STORAGE};

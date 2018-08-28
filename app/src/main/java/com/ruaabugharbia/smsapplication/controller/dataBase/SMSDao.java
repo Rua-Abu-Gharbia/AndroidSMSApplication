@@ -20,16 +20,19 @@ public interface SMSDao {
     @Query("SELECT * FROM messages")
     List<SMSModel> getAll();
 
+    @Query("SELECT * FROM messages WHERE type =:type")
+    List<SMSModel> getByType(String type);
+
     @Insert
     void insertAll(List<SMSModel> smsModels);
 
     @Insert
-    void insertUser(SMSModel smsModel);
+    void insertModel(SMSModel smsModel);
 
     @Update
-    void updateUser(SMSModel smsModel);
+    void updateModel(SMSModel smsModel);
 
     @Delete
-    void deleteUser(SMSModel smsModel);
+    void deleteModel(SMSModel smsModel);
 
 }

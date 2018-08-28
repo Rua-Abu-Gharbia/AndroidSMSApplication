@@ -63,8 +63,4 @@ public class BlankFragment extends Fragment {
     protected void gotoFragment(Fragment fragment, FragmentManager fragmentManager , Bundle data) {
         gotoFragment(fragment, fragmentManager, true , data);
     }
-
-
-
-
 }

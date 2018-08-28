@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ruaabugharbia.smsapplication.R;
+import com.ruaabugharbia.smsapplication.controller.dataBase.AppDatabase;
 import com.ruaabugharbia.smsapplication.models.SMSModel;
 
 import java.util.List;
@@ -45,7 +46,12 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder,final int position) {
-
+       final SMSModel model = data.get(position);
+        if(model.isFavourite()){
+            holder.favoriteImageView.setImageResource(R.drawable.baseline_favorite_black);
+        } else {
+            holder.favoriteImageView.setImageResource(R.drawable.baseline_favorite_border_black);
+        }
         holder.smsBodyTextView.setText(data.get(position).getSmsBody());
         holder.shareImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +75,24 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
                 mContext.startActivity(Intent.createChooser(sharingIntent, mContext.getResources().getString(R.string.share_using)));
             }
         });
+
+        holder.favoriteImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(model.isFavourite()){
+                    model.setFavourite(false);
+                    holder.favoriteImageView.setImageResource(R.drawable.baseline_favorite_border_black);
+                } else {
+                    model.setFavourite(true);
+                    holder.favoriteImageView.setImageResource(R.drawable.baseline_favorite_black);
+                }
+
+                AppDatabase database = AppDatabase.getAppDatabase(mContext);
+                database.smsDao().updateModel(model);
+
+            }
+        });
     }
 
     @Override
@@ -78,13 +102,14 @@ public class SMSAdapter extends RecyclerView.Adapter<SMSAdapter.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         final TextView  smsBodyTextView;
-        final ImageView shareImageView , whatsappImageView ;
+        final ImageView shareImageView , whatsappImageView , favoriteImageView ;
 
         public MyViewHolder(View view) {
             super(view);
             smsBodyTextView = view.findViewById(R.id.text_sms_body);
             shareImageView = view.findViewById(R.id.imageView_share);
             whatsappImageView  = view.findViewById(R.id.imageView_whatsapp);
+            favoriteImageView  = view.findViewById(R.id.imageView_favorite);
         }
     }
 }

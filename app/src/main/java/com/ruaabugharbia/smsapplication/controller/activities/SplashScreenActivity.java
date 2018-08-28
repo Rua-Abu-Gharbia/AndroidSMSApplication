@@ -17,6 +17,7 @@ import com.ruaabugharbia.smsapplication.R;
 import com.ruaabugharbia.smsapplication.controller.constants.AppConstants;
 import com.ruaabugharbia.smsapplication.controller.dataBase.AppDatabase;
 import com.ruaabugharbia.smsapplication.controller.service.UserTrackingReceiverIntentService;
+import com.ruaabugharbia.smsapplication.controller.utils.AppPrefs;
 import com.ruaabugharbia.smsapplication.controller.utils.AppUtils;
 import com.ruaabugharbia.smsapplication.models.SMSModel;
 import com.ruaabugharbia.smsapplication.models.TypeModel;
@@ -49,7 +50,11 @@ public class SplashScreenActivity extends AppCompatActivity {
            startService(new Intent(SplashScreenActivity.this, UserTrackingReceiverIntentService.class));
         }
 
-        getData();
+        if(AppPrefs.getMessageData(this)){
+            getData();
+            AppPrefs.setMessageData(this,false);
+        }
+
 
         InputStream stream = null;
         try {
