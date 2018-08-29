@@ -12,8 +12,7 @@
         android:layout_height="52dp"
         android:background="@color/app_gray"
         app:pstsDividerColor="@android:color/white"
-        app:pstsIndicatorHeight="5dp"
-        app:pstsShouldExpand="true" />
+        app:pstsIndicatorHeight="5dp" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"

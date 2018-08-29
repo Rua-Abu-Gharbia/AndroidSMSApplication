@@ -23,6 +23,9 @@ public interface SMSDao {
     @Query("SELECT * FROM messages WHERE type =:type")
     List<SMSModel> getByType(String type);
 
+    @Query("SELECT * FROM messages WHERE favourite =:favourite")
+    List<SMSModel> getFavorite(boolean favourite);
+
     @Insert
     void insertAll(List<SMSModel> smsModels);
 

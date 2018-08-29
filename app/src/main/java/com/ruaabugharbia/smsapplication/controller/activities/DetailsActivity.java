@@ -1,14 +1,13 @@
 package com.ruaabugharbia.smsapplication.controller.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.ruaabugharbia.smsapplication.R;
 import com.ruaabugharbia.smsapplication.controller.fragments.DetailsFragment;
-import com.ruaabugharbia.smsapplication.controller.fragments.MessageSectionsFragment;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -20,7 +19,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragment = new MessageSectionsFragment();
+        fragment = new DetailsFragment();
 
         fragmentTransaction.replace(R.id.container, fragment);
         fragmentTransaction.commit();

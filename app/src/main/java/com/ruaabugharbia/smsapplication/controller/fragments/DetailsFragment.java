@@ -1,8 +1,6 @@
 package com.ruaabugharbia.smsapplication.controller.fragments;
 
-import android.content.Context;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -59,14 +57,14 @@ public class DetailsFragment extends BlankFragment {
         MyPagerAdapter adapter = new MyPagerAdapter(getChildFragmentManager());
         pager.setAdapter(adapter);
         int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                4, getResources().getDisplayMetrics());
+                5, getResources().getDisplayMetrics());
         pager.setPageMargin(pageMargin);
 
         PagerSlidingTabStrip tabs =  view.findViewById(R.id.tabs);
         tabs.setAllCaps(false);
         tabs.setViewPager(pager);
         tabs.setIndicatorColor(getResources().getColor(R.color.border_color));
-        tabs.setTextSize(17);
+        tabs.setTextSize(30);
         tabs.setTextColor(Color.WHITE);
 
     }

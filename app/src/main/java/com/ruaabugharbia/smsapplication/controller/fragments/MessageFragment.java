@@ -1,23 +1,16 @@
 package com.ruaabugharbia.smsapplication.controller.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.ruaabugharbia.smsapplication.R;
 import com.ruaabugharbia.smsapplication.controller.dataBase.AppDatabase;
-import com.ruaabugharbia.smsapplication.controller.utils.AppUtils;
 import com.ruaabugharbia.smsapplication.controller.utils.IntentExtraNames;
 import com.ruaabugharbia.smsapplication.models.SMSModel;
-import com.ruaabugharbia.smsapplication.models.TypeModel;
 import com.ruaabugharbia.smsapplication.view.adapters.SMSAdapter;
 
 import java.util.ArrayList;

@@ -4,10 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.ruaabugharbia.smsapplication.controller.fragments.FavoriteMessageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sms_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Favurat" />
+        android:layout_gravity="fill_vertical"
+        android:background="@android:color/white"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
